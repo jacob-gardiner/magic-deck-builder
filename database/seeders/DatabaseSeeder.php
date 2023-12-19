@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        DB::unprepared(file_get_contents(app_path('../database/seeders/magic_deck_builder_cards.sql')));
+        DB::unprepared(file_get_contents(app_path('../database/seeders/magic_deck_builder_card_images.sql')));
     }
 }
